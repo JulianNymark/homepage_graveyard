@@ -25,7 +25,7 @@ when you're done.
 
 ## "The quirky way" that doesn't require assigning static IPv4's
 
-fly supports a crude SFTP setup from their CLI tool. `fly ssh sftp console`. it doesn't allow you to uplad directories, nor to overwrite a single file. But it's still _fine_ for a single file upload every now and then. 
+fly supports a crude SFTP setup from their CLI tool. `fly ssh sftp console`. it doesn't allow you to upload entire directories, nor to overwrite a single existing file. But it's still _fine_ for a single file upload every now and then. 
 The steps I use are:
 1. delete the single file from the normal console via `fly ssh console`.
 2. open the sftp shell with `fly ssh sftp shell`
