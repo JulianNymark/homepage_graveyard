@@ -1,0 +1,24 @@
+server {
+    listen 8080 default_server;
+    listen [::]:8080 default_server;
+
+    root /usr/share/nginx/html;
+    index index.html index.htm;
+
+    error_log /mnt/nginx/logs/error.log;
+    access_log /mnt/nginx/logs/access.log;
+
+    port_in_redirect off;
+    server_name_in_redirect off;
+    proxy_set_header Host $host;
+
+    # rewrite all URLs without a trailing slash to one with a trailing slash
+    rewrite ^([^.]*[^/])$ $1/ permanent;
+
+    server_name _;
+    location / {
+        autoindex on;
+        root /mnt/data/html;
+        try_files $uri $uri/ =404;
+    }
+}

@@ -1,0 +1,39 @@
+# fly.toml app configuration file generated for homepage-graveyard on 2024-04-23T15:14:08+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app            = 'homepage-graveyard'
+primary_region = 'ams'
+
+[build]
+
+[[mounts]]
+  source       = 'homepage_graveyard'
+  destination  = '/mnt'
+  initial_size = '1gb'
+
+[[services]]
+  internal_port        = 8080
+  auto_stop_machines   = true
+  auto_start_machines  = true
+  min_machines_running = 0
+  [[services.ports]]
+    handlers    = ["http"]
+    port        = 80
+    force_https = true
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port     = 443
+[[services]]
+  internal_port       = 2222
+  protocol            = "tcp"
+  auto_stop_machines  = true
+  auto_start_machines = true
+  [[services.ports]]
+    port = 22
+
+[[vm]]
+  memory   = '1gb'
+  cpu_kind = 'shared'
+  cpus     = 1
