@@ -30,5 +30,5 @@ The steps I use are:
 1. delete the single file from the normal console via `fly ssh console`.
 2. open the sftp shell with `fly ssh sftp shell`
 3. walk the directory to location of the file (the sftp shell supports `ls` and `cd`)
-4. run `put path/to/file/on/local/drive.txt` (uses the cwd of both local and remote)
+4. run `put path/to/file/on/local/drive/file.txt file.txt` (uses the cwd of both local and remote)
 
